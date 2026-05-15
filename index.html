@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gagan Gutta — [tagline]</title>
+<title>Gagan Gutta</title>
 <meta name="description" content="Personal site of Gagan Gutta." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,7 +40,6 @@
 
   a { color: inherit; text-decoration: none; }
 
-  /* Grain overlay for subtle texture */
   body::before {
     content: "";
     position: fixed;
@@ -75,13 +74,14 @@
     height: 64px;
   }
   .mark {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 20px;
-    letter-spacing: -0.01em;
-    font-style: italic;
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    transition: color .2s ease;
   }
-  .mark span { font-style: normal; }
+  .mark:hover { color: var(--ink); }
   nav ul {
     display: flex;
     gap: 28px;
@@ -96,7 +96,7 @@
     transition: color .2s ease;
   }
   nav ul a:hover { color: var(--ink); }
-  nav ul a::before { content: "→ "; opacity: 0; transition: opacity .2s ease; }
+  nav ul a::before { content: "\2192 "; opacity: 0; transition: opacity .2s ease; }
   nav ul a:hover::before { opacity: 1; }
 
   /* ---------- HERO ---------- */
@@ -144,19 +144,13 @@
     margin: 0 0 40px;
     font-weight: 400;
   }
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    font-family: var(--mono);
-    font-size: 12.5px;
-    color: var(--muted);
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: end;
   }
-  .hero-meta div span {
-    display: block;
-    color: var(--ink);
-    margin-top: 4px;
-  }
+  .hero-portrait { max-width: 360px; margin-left: auto; width: 100%; }
 
   /* ---------- SECTIONS ---------- */
   section {
@@ -213,86 +207,72 @@
     color: var(--muted);
     font-style: italic;
   }
-
-  /* ---------- INTERESTS ---------- */
-  .interests {
+  .about-images {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--line);
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 32px;
   }
-  .interest {
-    padding: 36px 28px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    position: relative;
-    transition: background .25s ease;
-  }
-  .interest:nth-child(3n) { border-right: none; }
-  .interest:hover { background: #fafafa; }
-  .interest .idx {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-  .interest h3 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: 26px;
-    margin: 12px 0 10px;
-    letter-spacing: -0.01em;
-  }
-  .interest p {
-    margin: 0;
-    font-size: 14.5px;
-    color: var(--muted);
-    line-height: 1.55;
-  }
+  .about-images .img-ph:first-child { grid-column: 1 / -1; }
 
-  /* ---------- EDUCATION ---------- */
-  .timeline { display: flex; flex-direction: column; }
-  .edu {
+  /* ---------- MEDIA MENTIONS ---------- */
+  .mentions {
+    display: flex;
+    flex-direction: column;
+  }
+  .mention-item {
     display: grid;
-    grid-template-columns: 180px 1fr auto;
+    grid-template-columns: 60px 1fr auto;
     gap: 32px;
     padding: 28px 0;
     border-top: 1px solid var(--line);
     align-items: start;
+    transition: padding .3s ease;
   }
-  .edu:last-child { border-bottom: 1px solid var(--line); }
-  .edu .when {
+  .mention-item:last-child { border-bottom: 1px solid var(--line); }
+  .mention-item:hover { padding-left: 12px; }
+  .mention-item .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 6px;
+  }
+  .mention-item h3 {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 400;
+    margin: 0 0 6px;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  .mention-item h3 a {
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s ease;
+  }
+  .mention-item h3 a:hover { border-bottom-color: var(--ink); }
+  .mention-item .source {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .mention-item .date {
     font-family: var(--mono);
     font-size: 12.5px;
     color: var(--muted);
-    padding-top: 4px;
-  }
-  .edu .what h3 {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-weight: 400;
-    margin: 0 0 6px;
-    letter-spacing: -0.01em;
-  }
-  .edu .what .deg {
-    font-size: 14px;
-    color: var(--muted);
-    margin: 0 0 12px;
-  }
-  .edu .what p {
-    margin: 0;
-    font-size: 15px;
-    color: var(--ink-2);
-    max-width: 560px;
-  }
-  .edu .tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink);
-    border: 1px solid var(--ink);
-    padding: 5px 9px;
-    letter-spacing: 0.06em;
+    padding-top: 6px;
     white-space: nowrap;
+  }
+  .mention-item .mention-img {
+    margin-top: 14px;
+    max-width: 480px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .mention-item .mention-img img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* ---------- WORK / PROJECTS ---------- */
@@ -362,18 +342,22 @@
     padding-top: 8px;
     white-space: nowrap;
   }
+  .work-item .work-img {
+    margin-top: 20px;
+    max-width: 640px;
+  }
 
-  /* ---------- FOOTER ---------- */
+  /* ---------- FOOTER / CONTACT ---------- */
   footer {
     padding: 80px 0 60px;
-    background: var(--ink);
-    color: #fff;
+    background: var(--bg);
+    color: var(--ink);
+    border-top: 1px solid var(--line);
   }
-  footer .row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-    align-items: start;
+  footer .contact-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
   }
   footer h2 {
     font-family: var(--serif);
@@ -381,46 +365,36 @@
     font-weight: 300;
     letter-spacing: -0.025em;
     line-height: 1;
-    margin: 0 0 16px;
+    margin: 0 0 20px;
   }
   footer h2 em { font-style: italic; }
-  footer .lede {
-    font-family: var(--serif);
-    color: #c8c8c8;
-    font-size: 18px;
-    max-width: 420px;
-    margin: 0 0 24px;
+  footer .contact-name {
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--ink);
+    font-weight: 500;
+    margin: 0 0 8px;
   }
-  footer .col-head {
+  footer .contact-email a {
     font-family: var(--mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    color: #888;
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
+    font-size: 14px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+    transition: border-color .2s ease, color .2s ease;
   }
-  footer ul {
-    list-style: none;
-    padding: 0; margin: 0;
-    font-family: var(--mono);
-    font-size: 13px;
+  footer .contact-email a:hover {
+    color: var(--ink);
+    border-color: var(--ink);
   }
-  footer ul li { margin-bottom: 10px; }
-  footer ul a {
-    color: #e8e8e8;
-    border-bottom: 1px solid transparent;
-    transition: border-color .2s ease;
-  }
-  footer ul a:hover { border-color: #e8e8e8; }
   .colophon {
     margin-top: 60px;
     padding-top: 24px;
-    border-top: 1px solid #2a2a2a;
+    border-top: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
     font-family: var(--mono);
     font-size: 11px;
-    color: #888;
+    color: var(--muted);
     letter-spacing: 0.04em;
   }
 
@@ -471,68 +445,24 @@
   .img-wide     { aspect-ratio: 16 / 10; }
   .img-tall     { aspect-ratio: 3 / 4; }
 
-  /* hero portrait layout */
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: clamp(32px, 6vw, 80px);
-    align-items: end;
-  }
-  .hero-portrait { max-width: 360px; margin-left: auto; width: 100%; }
-
-  /* about image stack */
-  .about-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 32px;
-  }
-  .about-images .img-ph:first-child { grid-column: 1 / -1; }
-
-  /* work item image */
-  .work-item .work-img {
-    margin-top: 20px;
-    max-width: 640px;
-  }
-
-  /* ---------- GALLERY (photography) ---------- */
-  #gallery .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-  }
-  #gallery .gallery-grid .img-ph:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-  #gallery .gallery-grid .img-ph:nth-child(4) { grid-column: span 2; }
-
+  /* ---------- RESPONSIVE ---------- */
   @media (max-width: 800px) {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-portrait { max-width: 280px; margin: 32px 0 0; }
     .about-images { grid-template-columns: 1fr; }
-    #gallery .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    #gallery .gallery-grid .img-ph:nth-child(1) { grid-column: span 2; grid-row: auto; }
-    #gallery .gallery-grid .img-ph:nth-child(4) { grid-column: span 2; }
-  }
-
-  @media (max-width: 800px) {
     nav ul { display: none; }
     .section-head,
     .about-grid {
       grid-template-columns: 1fr;
       gap: 20px;
     }
-    .interests { grid-template-columns: 1fr; }
-    .interest { border-right: none; }
-    .interest:nth-child(3n) { border-right: none; }
-    .edu {
+    .work-item,
+    .mention-item {
       grid-template-columns: 1fr;
       gap: 10px;
     }
-    .work-item {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .work-item .num, .work-item .year { padding-top: 0; }
-    footer .row { grid-template-columns: 1fr; }
+    .work-item .num, .work-item .year,
+    .mention-item .num, .mention-item .date { padding-top: 0; }
     .colophon { flex-direction: column; gap: 8px; }
   }
 
@@ -555,9 +485,9 @@
 
 <nav class="top">
   <div class="wrap row">
-    <a href="#" class="mark"><em>g</em><span>.</span></a>
+    <a href="mailto:gg3367@nyu.edu" class="mark">gg3367@nyu.edu</a>
     <ul>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="mailto:gg3367@nyu.edu">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -605,11 +535,36 @@
   </div>
 </section>
 
+<!-- MEDIA MENTIONS -->
+<section id="media">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">02 / Media</div>
+      <h2 class="section-title">In the <em>press</em>.</h2>
+    </div>
+    <div class="mentions">
+
+      <article class="mention-item">
+        <div class="num">01</div>
+        <div>
+          <h3><a href="https://dailycollegian.com/2025/04/umass-freshmen-develop-startup-to-combat-media-bias/" target="_blank" rel="noopener">UMass freshmen develop startup to combat media bias</a></h3>
+          <div class="source">The Massachusetts Daily Collegian</div>
+          <div class="mention-img">
+            <img src="https://dailycollegian.com/wp-content/uploads/2025/04/Gagan-Gutta-2048x1536.jpg" alt="Daily Collegian feature" />
+          </div>
+        </div>
+        <div class="date">Apr 2025</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- WORK / PROJECTS -->
 <section id="work">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">02 / Work &amp; Projects</div>
+      <div class="section-num">03 / Work &amp; Projects</div>
       <h2 class="section-title">Selected <em>work</em>.</h2>
     </div>
     <div class="work">
@@ -672,133 +627,17 @@
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-num">03 / Education</div>
-      <h2 class="section-title">Where I've <em>studied</em>.</h2>
-    </div>
-    <div class="timeline">
-      <div class="edu">
-        <div class="when">[Years]</div>
-        <div class="what">
-          <h3>[School one]</h3>
-          <div class="deg">[Degree, concentration]</div>
-          <p class="placeholder">[Optional one-liner: coursework, honors, what you focused on.]</p>
-        </div>
-        <div class="tag">[Tag]</div>
-      </div>
-      <div class="edu">
-        <div class="when">[Years]</div>
-        <div class="what">
-          <h3>[School two]</h3>
-          <div class="deg">[Degree, concentration]</div>
-          <p class="placeholder">[Optional one-liner.]</p>
-        </div>
-        <div class="tag">[Tag]</div>
-      </div>
-      <div class="edu">
-        <div class="when">[Years]</div>
-        <div class="what">
-          <h3>[School three]</h3>
-          <div class="deg">[Degree, concentration]</div>
-          <p class="placeholder">[Optional one-liner.]</p>
-        </div>
-        <div class="tag">[Tag]</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INTERESTS -->
-<section id="interests">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-num">04 / Interests</div>
-      <h2 class="section-title">Things I <em>think about</em>.</h2>
-    </div>
-    <div class="interests">
-      <div class="interest">
-        <div class="idx">01</div>
-        <h3>[Interest one]</h3>
-        <p class="placeholder">[A sentence or two on why this one matters to you.]</p>
-      </div>
-      <div class="interest">
-        <div class="idx">02</div>
-        <h3>[Interest two]</h3>
-        <p class="placeholder">[A sentence or two.]</p>
-      </div>
-      <div class="interest">
-        <div class="idx">03</div>
-        <h3>[Interest three]</h3>
-        <p class="placeholder">[A sentence or two.]</p>
-      </div>
-      <div class="interest">
-        <div class="idx">04</div>
-        <h3>[Interest four]</h3>
-        <p class="placeholder">[A sentence or two.]</p>
-      </div>
-      <div class="interest">
-        <div class="idx">05</div>
-        <h3>[Interest five]</h3>
-        <p class="placeholder">[A sentence or two.]</p>
-      </div>
-      <div class="interest">
-        <div class="idx">06</div>
-        <h3>[Interest six]</h3>
-        <p class="placeholder">[A sentence or two.]</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY / PHOTOGRAPHY -->
-<section id="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-num">05 / Gallery</div>
-      <h2 class="section-title">Through the <em>viewfinder</em>.</h2>
-    </div>
-    <div class="gallery-grid">
-      <div class="img-ph img-square" data-label="Photo 01"></div>
-      <div class="img-ph img-square" data-label="Photo 02"></div>
-      <div class="img-ph img-square" data-label="Photo 03"></div>
-      <div class="img-ph img-wide" data-label="Photo 04"></div>
-      <div class="img-ph img-square" data-label="Photo 05"></div>
-      <div class="img-ph img-square" data-label="Photo 06"></div>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER / CONTACT -->
 <footer id="contact">
   <div class="wrap">
-    <div class="row">
-      <div>
-        <h2>Get in <em>touch</em>.</h2>
-        <p class="lede placeholder">[A line about what kinds of conversations you're open to. Cold emails welcome, etc.]</p>
-      </div>
-      <div>
-        <div class="col-head">Reach</div>
-        <ul>
-          <li><a href="mailto:[email]">[email]</a></li>
-          <li><a href="#">[other email]</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="col-head">Elsewhere</div>
-        <ul>
-          <li><a href="#">GitHub →</a></li>
-          <li><a href="#">LinkedIn →</a></li>
-          <li><a href="#">Twitter / X →</a></li>
-          <li><a href="#">Read.cv →</a></li>
-        </ul>
-      </div>
+    <div class="contact-inner">
+      <h2>Would love to <em>talk</em>.</h2>
+      <p class="contact-name">Gagan Gutta</p>
+      <p class="contact-email"><a href="mailto:gg3367@nyu.edu">gg3367@nyu.edu</a></p>
     </div>
     <div class="colophon">
-      <div>© 2026 Gagan [last name]</div>
-      <div>Built in HTML &amp; CSS · Last updated [date]</div>
+      <div>&copy; 2026 Gagan Gutta</div>
+      <div>Built in HTML &amp; CSS</div>
     </div>
   </div>
 </footer>
