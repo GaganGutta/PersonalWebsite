@@ -282,7 +282,7 @@
   }
   .work-item {
     display: grid;
-    grid-template-columns: 60px 1fr auto;
+    grid-template-columns: 60px 1fr 240px;
     gap: 32px;
     padding: 36px 0;
     border-top: 1px solid var(--line);
@@ -345,6 +345,9 @@
   .work-item .work-img {
     margin-top: 20px;
     max-width: 640px;
+  }
+  .work-item .work-thumb {
+    align-self: center;
   }
 
   /* ---------- FOOTER / CONTACT ---------- */
@@ -463,6 +466,7 @@
     }
     .work-item .num, .work-item .year,
     .mention-item .num, .mention-item .date { padding-top: 0; }
+    .work-item .work-thumb { margin-top: 16px; }
     .colophon { flex-direction: column; gap: 8px; }
   }
 
@@ -581,7 +585,10 @@
             <span>Python</span><span>PyTorch</span><span>YOLOv8</span><span>YOLOv12</span><span>OpenCV</span><span>SAHI</span><span>Pydantic</span><span>Gradio</span>
           </div>
         </div>
-        <div class="year">2025–2026</div>
+        <div class="work-thumb">
+          <div class="year">2025–2026</div>
+          <div class="img-ph img-square" data-label="HerringNet" style="margin-top:12px;"></div>
+        </div>
       </article>
 
       <article class="work-item">
@@ -596,7 +603,10 @@
             <span>Python</span><span>NLP</span><span>API Design</span><span>Enterprise Sales</span>
           </div>
         </div>
-        <div class="year">2023–Present</div>
+        <div class="work-thumb">
+          <div class="year">2023–Present</div>
+          <div class="img-ph img-square" data-label="ContextGrade" style="margin-top:12px;"></div>
+        </div>
       </article>
 
     </div>
