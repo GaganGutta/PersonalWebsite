@@ -349,6 +349,17 @@
   .work-item .work-thumb {
     align-self: center;
   }
+  .work-item h3 a {
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s ease;
+  }
+  .work-item h3 a:hover { border-bottom-color: var(--ink); }
+  .work-item p code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: #f4f4f4;
+    padding: 2px 5px;
+  }
 
   /* ---------- FOOTER / CONTACT ---------- */
   footer {
@@ -626,14 +637,19 @@
       <article class="work-item">
         <div class="num">01</div>
         <div>
-          <h3>[Project one]</h3>
-          <div class="role">[What it is]</div>
-          <p class="placeholder">[One short paragraph. What you built, why, what it does.]</p>
+          <h3><a href="https://github.com/GaganGutta/neural-game-engine" target="_blank" rel="noopener"><em>Neural Game Engine</em></a></h3>
+          <div class="role">A game you play inside a neural network</div>
+          <p>Train an action-conditioned world model on Doom, then throw the game engine away and drive the model with your keyboard. At play time there is no Doom running: a VQ-VAE compresses each 64x64 frame to an 8x8 grid of tokens, and a 2.0M-parameter transformer predicts the next frame's tokens from the last six frames plus a keypress. Its own output is fed back in as context, so the interesting question is how fast the hallucination drifts.</p>
+          <p>Getting it playable on a laptop CPU was most of the work: KV caching, MaskGIT parallel decoding, bf16 and int8 took it from 0.75 to 41.3 fps, a 55x speedup with no GPU anywhere in the stack. The tokenizer holds 28.2 dB on held-out frames with 429 of 512 codebook entries live.</p>
+          <p>I also built a retrieval memory to fight the drift, measured a 0.47 dB win, then ran four seeds and found the win was the seed. It ships disabled and the negative result is written up in the README. Public repo with a shipped checkpoint, so <code>python play.py</code> works straight from a clone.</p>
           <div class="stack">
-            <span>[tech]</span><span>[tech]</span><span>[tech]</span>
+            <span>Python</span><span>PyTorch</span><span>VQ-VAE</span><span>Transformers</span><span>MaskGIT</span><span>VizDoom</span><span>NumPy</span>
           </div>
         </div>
-        <div class="year">[Year]</div>
+        <div class="work-thumb">
+          <div class="year">2026</div>
+          <div class="img-ph img-square" data-label="Neural Game Engine" style="margin-top:12px;"></div>
+        </div>
       </article>
 
       <article class="work-item">
